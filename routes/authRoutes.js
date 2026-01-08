@@ -5,4 +5,5 @@ const authController = require("../controllers/authController"); // Remove the d
 router.post("/register", authController.signUp);
 router.post("/login", authController.login);
 router.get("/Me", authController.protect, authController.getMe);
+router.patch("/updateMe", authController.protect, authController.updateMe);
 module.exports = router;

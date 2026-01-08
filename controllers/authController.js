@@ -103,3 +103,17 @@ exports.getMe = (req, res) => {
     },
   });
 };
+exports.updateMe = async (req, res, next) => {
+  console.log("req.user._id:", req.user._id);
+  const updatedData = await User.findByIdAndUpdate(
+    req.user._id,
+    { name: req.body.name, email: req.body.email },
+    { new: true }
+  );
+  res.status(200).json({
+    status: "success",
+    data: {
+      updatedData,
+    },
+  });
+};
